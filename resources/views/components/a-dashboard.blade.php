@@ -1,6 +1,5 @@
 <div id="main" class="bg-gray-800 dark:bg-gray-900 p-6 lg:p-8">
-    <button id="add-project-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-2 ml-2 rounded"
-        style="float: right; margin-top: 10px;"> Add Project </button>
+    <button id="add-project-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-2 ml-2 rounded" style="float: right; margin-top: 10px;">Add Project</button>
     <table class="min-w-full divide-y divide-gray-700 dark:divide-gray-600">
         <thead>
             <tr>
@@ -35,11 +34,9 @@
         <tbody>
 </div>
 
-
-<div id="popup" class="fixed inset-0 z-50 flex items-center justify-center hidden w-1/2" >
+<div id="popup" class="fixed inset-0 z-50 flex items-center justify-center hidden">
     <div class="bg-gray-900 p-6 lg:p-8 relative w-4/5">
-        <button id="close-btn" type="button"
-            class="absolute top-4 right-4 bg-red-500 hover:bg-red-700 text-white font-semibold py-1 px-2 rounded">Close</button>
+        <button id="close-btn" type="button" class="absolute top-4 right-4 bg-red-500 hover:bg-red-700 text-white font-semibold py-1 px-2 rounded">Close</button>
         <form action="/add_project" method="POST">
 
             @csrf
@@ -83,3 +80,19 @@
         popup.classList.add('hidden');
     });
 </script>
+
+<style>
+    /* Additional styles for the popup */
+    #popup {
+        background-color: rgba(0, 0, 0, 0.8); /* Darken the background */
+    }
+
+    #popup > div {
+        width: 50%;
+        max-width: 600px;
+    }
+
+    #popup form {
+        margin-top: 20px;
+    }
+</style>
