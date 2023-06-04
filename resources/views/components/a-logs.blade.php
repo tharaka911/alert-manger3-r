@@ -1,13 +1,9 @@
-<div class="bg-gray-800 dark:bg-gray-900 p-6 lg:p-8">
+<div class="bg-gray-800 dark:bg-gray-900 p-6 lg:p-8" style="padding-top: 0rem;">
     <form class="mb-4">
+        <label for="filter_severity" class="block text-gray-300 dark:text-gray-400">Filter by Severity Level</label>
         <div class="flex mb-2">
             <div class="mr-2">
-                <label for="filter_project" class="block text-gray-300 dark:text-gray-400">Filter by Project</label>
-                <input type="text" id="filter_project" name="filter_project"
-                    class="w-full border-gray-700 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-700 text-gray-300 dark:text-gray-400">
-            </div>
-            <div>
-                <label for="filter_severity" class="block text-gray-300 dark:text-gray-400">Filter by Severity Level</label>
+
                 <select id="filter_severity" name="filter_severity"
                     class="w-full border-gray-700 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-700 text-gray-300 dark:text-gray-400">
                     <option value="">All</option>
@@ -16,9 +12,9 @@
                     <option value="high">High</option>
                 </select>
             </div>
+            <button type="submit"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-2 rounded">Filter</button>
         </div>
-        <button type="submit"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-2 rounded">Filter</button>
     </form>
 
     <table class="min-w-full divide-y divide-gray-700 dark:divide-gray-600">

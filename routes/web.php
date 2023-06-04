@@ -28,5 +28,7 @@ Route::middleware([
     // Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logs', [LogController::class, 'index'])->name('logs');
     Route::get('/logs/{project_api_key}', [LogController::class, 'index']);
-    // Route::resource('/project', ProjectsController::class);
+    Route::resource('/project', ProjectController::class);
+
+
 });
