@@ -7,6 +7,7 @@ use App\Models\Telegram;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -31,7 +32,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProjectRequest $request)
+    public function store(Request $request)
     {
         $validator = $request->validate([
             'project_name' => 'required',
@@ -42,7 +43,7 @@ class ProjectController extends Controller
 
         $user = Auth::user();
         $user_id = $user->id;
-        dd($user_id);
+        //dd($user_id);
 
         //generated encripted key for project api
         $project_api_key = Str::uuid()->toString();
@@ -57,17 +58,17 @@ class ProjectController extends Controller
                 'key_generated_time' => now(),
             ]
         );
-        dd(Project::count());
+        //dd(Project::count());
         $project_id = Project::count();
 
         Telegram::create(
             [
                 'project_id' => $project_id,
                 'bot_api_key' => $request->api_key,
-                'project_name' => $request->channel_id,
+                'channel_id' => $request->channel_id,
             ]
         );
-        return redirect()->back()->with('success', 'Form data stored successfully');
+        return redirect()->route('dashboard')->with('success', 'Form data stored successfully');
     }
 
     /**

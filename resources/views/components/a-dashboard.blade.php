@@ -1,3 +1,21 @@
+@if (session('success'))
+    <div id="alert-success" class="alert alert-success"
+        style="transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); transform: translateX(150%);">
+        <i class="mr-2 align-middle icon-sm mdi mdi-check"></i>{{ session('success') }}
+    </div>
+    <script>
+        let alert_success = document.getElementById('alert-success');
+        setTimeout(() => {
+            alert_success.style.transform = 'translateX(0)';
+        }, 1000);
+        setTimeout(() => {
+            alert_success.style.transform = 'translateX(150%)';
+            setTimeout(() => {
+                alert_success.style.display = 'none';
+            }, 500);
+        }, 6000);
+    </script>
+@endif
 <div id="main" class="bg-gray-800 dark:bg-gray-900 p-6 lg:p-8" style="padding-top: 0rem;">
     <button id="add-project-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 ml-2 rounded"
         style="float: right; margin-top: 10px;">Add Project</button>
@@ -59,20 +77,6 @@
     <div class="bg-gray-900 p-6 lg:p-8 relative w-4/5">
         <button id="close-btn" type="button"
             class="absolute top-4 right-4 bg-red-500 hover:bg-red-700 text-white font-semibold py-1 px-2 rounded">Close</button>
-
-        @if ($errors->any())
-            <div>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        @if (session('success'))
-            <div>{{ session('success') }}</div>
-        @endif
 
         <form method="POST" action="/project">
 
