@@ -55,13 +55,22 @@
                     <td class="py-4 px-6 text-gray-300 dark:text-gray-400">{{ $project->project_name }}</td>
                     <td class="py-4 px-6 text-gray-300 dark:text-gray-400">{{ $project->domain_name }}</td>
                     <td class="py-4 px-6 text-gray-300 dark:text-gray-400">{{ $project->created_at }}</td>
-                    <td class="py-4 px-6 text-gray-300 dark:text-gray-400">{{ $project->project_api_key }}<button
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-2 ml-2 rounded w-20">Copy</button>
+
+                    <td class="py-4 px-6 text-gray-300 dark:text-gray-400">
+                        <span id="full-api-key" style="display: none;">{{ $project->project_api_key }}</span>
+                        <span
+                            id="short-api-key">{{ substr($project->project_api_key, 0, 5) . str_repeat('*', 3) }}</span>
+                        <button
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-2 ml-2 rounded w-20"
+                            onclick="copyApiKey('{{ $project->project_api_key }}')">Copy</button>
                     </td>
                     <td class="py-4 px-6">
-                        <button
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-2 rounded w-20 mb-2"><a
-                                href="{{ route('logs') . '/' . $project->project_api_key }}">Logs</a></button>
+                        <a href="{{ route('logs') . '/' . $project->project_api_key }}">
+                            <button
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-2 rounded w-20 mb-2">Logs
+                            </button>
+                        </a>
+
                         <button
                             class="bg-red-500 hover:bg-red-700 text-white font-semibold py-1 px-2 rounded w-20">Delete</button>
 
@@ -124,6 +133,18 @@
     closeBtn.addEventListener('click', function() {
         popup.classList.add('hidden');
     });
+
+    //copy function
+    function copyApiKey(apiKey) {
+
+        navigator.clipboard.writeText(apiKey)
+            .then(function() {
+                alert("API key copied to clipboard!");
+            })
+            .catch(function(error) {
+                console.error("Unable to copy API key: ", error);
+            });
+    }
 </script>
 
 <style>
