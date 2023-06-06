@@ -1,6 +1,6 @@
 @if (session('success'))
     <div id="alert-success" class="alert alert-success"
-        style="transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); transform: translateX(150%);">
+        style="transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); transform: translateX(150%); color: white;">
         <i class="mr-2 align-middle icon-sm mdi mdi-check"></i>{{ session('success') }}
     </div>
     <script>
