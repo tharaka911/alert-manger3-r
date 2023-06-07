@@ -18,4 +18,16 @@ class DashboardController extends Controller
         //dd($projects);
         return view('dashboard', compact('projects'));
     }
+
+    //creta a delete function
+    public function delete($project_api_key)
+    {
+        $project = Project::all()->where('project_api_key', "=", $project_api_key)->first();
+        //dd($project);
+        $project->delete();
+        return redirect()->back();
+
+    }
+
+
 }

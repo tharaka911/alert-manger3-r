@@ -70,9 +70,10 @@
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-2 rounded w-20 mb-2">Logs
                             </button>
                         </a>
-
-                        <button
-                            class="bg-red-500 hover:bg-red-700 text-white font-semibold py-1 px-2 rounded w-20">Delete</button>
+                        <a href="{{ route('delete') . '/' . $project->project_api_key }}">
+                            <button
+                                class="bg-red-500 hover:bg-red-700 text-white font-semibold py-1 px-2 rounded w-20">Delete</button>
+                        </a>
 
                     </td>
 

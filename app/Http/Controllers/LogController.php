@@ -21,12 +21,14 @@ class LogController extends Controller
             $user_id = $user->id;
             //dd($user_id);
 
-
             $project = Project::all()->where('user_id', "=", $user_id)->where('project_api_key', "=", $project_api_key)->first();
             //dd($project);
             $project_id = $project->id;
            //dd($project_id);
-            $logs = Log::all()->where('project_id', '=',  $project_id);
+            // $logs = Log::all()->where('project_id', '=',  $project_id);
+            $logs = Log::where('project_id', $project_id)
+            ->paginate(5); // Set the number of logs to display per page (e.g., 10 logs per page)
+
            //dd($logs);
             return view('logs', compact('logs'));
         }
