@@ -38,6 +38,10 @@
                     <td class="py-4 px-6 text-gray-300 dark:text-gray-400">{{ $log->created_at }}</td>
                 </tr>
             @endforeach
+            <!-- Display pagination links -->
+            {{ $logs->links() }}
+
+
         </tbody>
     </table>
 </div>
